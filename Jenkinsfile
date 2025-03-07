@@ -36,7 +36,7 @@ pipeline{
         stage('Testing'){
             steps{
                 sh 'docker images'
-                sh 'docker run -itd --name web -p 81:80 954976287271.dkr.ecr.us-east-1.amazonaws.com/'
+                sh 'docker run -itd --name web -p 81:80 954976287271.dkr.ecr.us-east-1.amazonaws.com'
             }
         }
     }
