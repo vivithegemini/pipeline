@@ -17,6 +17,7 @@ pipeline{
         stage('DockerBuild'){
             steps{
                 sh 'docker build -t githubpipeline .'
+                sh 'docker images'
             }
         }
         stage('DockerImageTag'){
