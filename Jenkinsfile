@@ -33,5 +33,11 @@ pipeline{
                 sh 'docker push 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:v1.$BUILD_NUMBER'
             }
         }
+        stage('Testing'){
+            steps{
+                sh 'docker images'
+                sh 'docker run -itd --name web -p 81:80 954976287271.dkr.ecr.us-east-1.amazonaws.com/'
+            }
+        }
     }
 }
