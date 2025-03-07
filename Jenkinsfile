@@ -17,17 +17,20 @@ pipeline{
         stage('DockerBuild'){
             steps{
                 sh 'docker build -t githubpipeline .'
+                sh 'docker build -t newversion .'
                 sh 'docker images'
             }
         }
         stage('DockerImageTag'){
             steps{
                 sh 'docker tag githubpipeline:latest 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:latest'
+                sh 'docker tag githubpipeline:latest 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:v1.$BUILD_NUMBER'
             }
         }
         stage('DockerPushImage'){
             steps{
                 sh 'docker push 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:latest'
+                SH 'docker push 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:V1.$BUILD_NUMBER'
             }
         }
     }
