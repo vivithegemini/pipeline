@@ -8,11 +8,25 @@ pipeline{
 
             }
         }
+        stage('DockerLogin'){
+            steps{
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 954976287271.dkr.ecr.us-east-1.amazonaws.com'
+
+            }
+        }
         stage('DockerBuild'){
             steps{
-                sh 'docker build -t webapp .'
-                sh 'docker images'
-
+                sh 'docker build -t githubpipeline .'
+            }
+        }
+        stage('DockerImageTag'){
+            steps{
+                sh 'docker tag githubpipeline:latest 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:latest'
+            }
+        }
+        stage('DockerPushImage'){
+            steps{
+                sh 'docker push 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:latest'
             }
         }
     }
