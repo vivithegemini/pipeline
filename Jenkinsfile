@@ -36,7 +36,7 @@ pipeline{
         stage('Testing'){
             steps{
                 sh 'docker images'
-                sh 'docker run -itd --name web -p 81:80 githubpipeline'
+                sh 'docker run -itd --name weby -p 80:80 githubpipeline'
                 sh 'docker ps'
             }
         }
