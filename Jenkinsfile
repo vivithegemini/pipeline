@@ -30,7 +30,7 @@ pipeline{
         stage('DockerPushImage'){
             steps{
                 sh 'docker push 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:latest'
-                sh 'docker push 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:V1.$BUILD_NUMBER'
+                sh 'docker push 954976287271.dkr.ecr.us-east-1.amazonaws.com/githubpipeline:v1.$BUILD_NUMBER'
             }
         }
     }
