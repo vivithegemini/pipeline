@@ -1,5 +1,5 @@
 pipeline{
-    agent {label 'ubuntuagent'
+    agent {label 'ubuntu-agent'
     }
     stages{
         stage('CodeScan'){
