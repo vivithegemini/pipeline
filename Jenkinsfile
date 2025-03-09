@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent {'ubuntuagent'}
     stages{
         stage('CodeScan'){
             steps{
@@ -38,6 +38,13 @@ pipeline{
                 sh 'docker images'
                 sh 'docker run -itd --name weby -p 80:80 githubpipeline'
                 sh 'docker ps'
+            }
+        }
+        stage('TestingUbuntu'){
+            steps{
+                sh 'python3 --version'
+                sh 'docker --version'
+                sh 'java --version'
             }
         }
     }
